@@ -1,0 +1,12 @@
+.ad-banner{
+    width: 100%;
+    height: 400px;
+    margin-top: 40px;
+}
+
+.ad-banner img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
