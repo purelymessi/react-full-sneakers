@@ -2,22 +2,30 @@ import "./Navbar.css";
 import logo from "../../assets/image/logo.png";
 import { LuShoppingCart, LuHeart, LuUserCircle } from "react-icons/lu";
 import { useState } from "react";
-import shoe from  "../../assets/image/shoe.png";
-import shoe1 from "../../assets/image/shoe1.png"
-
+import shoe from "../../assets/image/shoe.png";
+import shoe1 from "../../assets/image/shoe1.png";
 
 function Navbar() {
   const [cartOpen, setCartOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const [favoritesOpen, setFavoritesOpen] = useState(false);
 
   const toggleCart = () => {
     setCartOpen(!cartOpen);
-    setProfileOpen(false); // Закрываем меню профиля при открытии корзины
+    setProfileOpen(false);
+    setFavoritesOpen(false);
   };
 
   const toggleProfile = () => {
     setProfileOpen(!profileOpen);
-    setCartOpen(false); // Закрываем корзину при открытии меню профиля
+    setCartOpen(false);
+    setFavoritesOpen(false);
+  };
+
+  const toggleFavorites = () => {
+    setFavoritesOpen(!favoritesOpen);
+    setCartOpen(false);
+    setProfileOpen(false);
   };
 
   return (
@@ -37,7 +45,7 @@ function Navbar() {
             <LuShoppingCart size={18} color="#9B9B9B" />
             <p>1205 руб.</p>
           </li>
-          <li>
+          <li onClick={toggleFavorites}>
             <LuHeart size={18} color="#9B9B9B" />
             <p>Закладки</p>
           </li>
@@ -50,15 +58,25 @@ function Navbar() {
       {cartOpen && (
         <div className="cart-menu">
           <h2>Корзина</h2>
-          <div className="cart-item">
-            <p>Мужские Кроссовки Nike Air Max 270</p>
-            <p>12 999 руб.</p>
-            <img src={shoe1} alt="" />
-          </div>
-          <div className="cart-item">
-            <p>Мужские Кроссовки Nike Blazer Mid Suede</p>
-            <p>8 499 руб.</p>
-            <img src={shoe} alt="" />
+          <div className="cart-products">
+            <div className="cart-product">
+              <div className="cart-product__image">
+                <img src={shoe1} alt="Nike Air Max 270" />
+              </div>
+              <div className="cart-product__text">
+                <h3>Мужские Кроссовки Nike Air Max 270</h3>
+                <p>12 999 руб.</p>
+              </div>
+            </div>
+            <div className="cart-product">
+              <div className="cart-product__image">
+                <img src={shoe} alt="Nike Blazer Mid Suede" />
+              </div>
+              <div className="cart-product__text">
+                <h3>Мужские Кроссовки Nike Blazer Mid Suede</h3>
+                <p>8 499 руб.</p>
+              </div>
+            </div>
           </div>
           <div className="cart-summary">
             <p>Итого: 21 498 руб.</p>
