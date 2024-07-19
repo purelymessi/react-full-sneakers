@@ -1,0 +1,25 @@
+/* CardsSearch.css */
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative; /* Make sure the icon is placed correctly */
+    margin-left: auto; /* Push the form-group to the right */
+  }
+  
+  .name {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  
+  .icon {
+    position: absolute;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  

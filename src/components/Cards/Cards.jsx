@@ -1,4 +1,6 @@
+import React, { useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
+import CardsSearch from "../CardsSearch/CardsSearch";
 import "./Cards.css";
 import shoe from "../../assets/image/shoe.png";
 import shoe1 from "../../assets/image/shoe1.png";
@@ -10,7 +12,7 @@ import shoe6 from "../../assets/image/shoe6.png";
 import shoe7 from "../../assets/image/shoe7.png";
 import shoe8 from "../../assets/image/shoe8.png";
 
-let products = [
+const products = [
   {
     productPrice: "12 999 руб.",
     productTitle: "Мужские Кроссовки Nike Blazer Mid Suede",
@@ -59,20 +61,35 @@ let products = [
 ];
 
 function Cards() {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredProducts = products.filter((product) =>
+    product.productTitle.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="cards-wrapper">
       <div className="cards-top container">
         <h1>Все кроссовки</h1>
+        <CardsSearch changeHandler={handleSearch} />
       </div>
       <div className="cards container">
-        {products.map((product, index) => (
-          <ProductCard
-            key={index}
-            productTitle={product.productTitle}
-            productPrice={product.productPrice}
-            img={product.img}
-          />
-        ))}
+        {filteredProducts.length === 0 ? (
+          <div className="text-not-found">Not Found</div>
+        ) : (
+          filteredProducts.map((product, index) => (
+            <ProductCard
+              key={index}
+              productTitle={product.productTitle}
+              productPrice={product.productPrice}
+              img={product.img}
+            />
+          ))
+        )}
       </div>
     </div>
   );
