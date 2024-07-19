@@ -1,10 +1,10 @@
-/* CardsSearch.css */
+
 .form-group {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    position: relative; /* Make sure the icon is placed correctly */
-    margin-left: auto; /* Push the form-group to the right */
+    position: relative; 
+    margin-left: auto; 
   }
   
   .name {
